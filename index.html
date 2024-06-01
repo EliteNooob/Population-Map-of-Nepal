@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/MarkerCluster.css">
         <link rel="stylesheet" href="css/MarkerCluster.Default.css">
-        <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/filter.css">
 <link rel="stylesheet" href="css/nouislider.min.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
@@ -26,7 +25,7 @@
             margin: 0;
         }
         </style>
-        <title>अमन मानन्धर</title>
+        <title>Population Map of NEPAL with Airports</title>
     </head>
     <body>
         <div id="map">
@@ -45,11 +44,10 @@
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet-measure.js"></script>
         <script src="js/leaflet.markercluster.js"></script>
-        <script src="js/leaflet-search.js"></script>
         <script src="js/tailDT.js"></script>
 <script src="js/nouislider.min.js"></script>
 <script src="js/wNumb.js"></script>
-        <script src="data/District_join_1.js"></script>
+        <script src="data/PopulationDistrictWise_1.js"></script>
         <script src="data/Airports_2.js"></script>
         <script>
         var highlightLayer;
@@ -70,7 +68,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[26.405237391319837,81.42252419312699],[29.432664028521746,86.84578521785345]]);
+        }).fitBounds([[26.035318045070717,78.98261017678362],[30.737579857014094,89.2081331795158]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -112,20 +110,20 @@
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        map.createPane('pane_OSMStandard_0');
-        map.getPane('pane_OSMStandard_0').style.zIndex = 400;
-        var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            pane: 'pane_OSMStandard_0',
+        map.createPane('pane_OpenStreetMap_0');
+        map.getPane('pane_OpenStreetMap_0').style.zIndex = 400;
+        var layer_OpenStreetMap_0 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OpenStreetMap_0',
             opacity: 1.0,
-            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+            attribution: '',
             minZoom: 1,
             maxZoom: 28,
             minNativeZoom: 0,
             maxNativeZoom: 19
         });
-        layer_OSMStandard_0;
-        map.addLayer(layer_OSMStandard_0);
-        function pop_District_join_1(feature, layer) {
+        layer_OpenStreetMap_0;
+        map.addLayer(layer_OpenStreetMap_0);
+        function pop_PopulationDistrictWise_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -145,7 +143,7 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td class="visible-with-data" id="DISTRICT"colspan="2"><strong>जिल्ला</strong><br />' + (feature.properties['DISTRICT'] !== null ? autolinker.link(feature.properties['DISTRICT'].toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="DISTRICT"colspan="2"><strong>DISTRICT</strong><br />' + (feature.properties['DISTRICT'] !== null ? autolinker.link(feature.properties['DISTRICT'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Total Population</th>\
@@ -170,10 +168,10 @@
             popup.setContent(updatedContent);
         }
 
-        function style_District_join_1_0(feature) {
+        function style_PopulationDistrictWise_1_0(feature) {
             if (feature.properties['Total_popu'] >= 5658.000000 && feature.properties['Total_popu'] <= 204831.000000 ) {
                 return {
-                pane: 'pane_District_join_1',
+                pane: 'pane_PopulationDistrictWise_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -188,7 +186,7 @@
             }
             if (feature.properties['Total_popu'] >= 204831.000000 && feature.properties['Total_popu'] <= 466073.000000 ) {
                 return {
-                pane: 'pane_District_join_1',
+                pane: 'pane_PopulationDistrictWise_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -203,7 +201,7 @@
             }
             if (feature.properties['Total_popu'] >= 466073.000000 && feature.properties['Total_popu'] <= 763137.000000 ) {
                 return {
-                pane: 'pane_District_join_1',
+                pane: 'pane_PopulationDistrictWise_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -218,7 +216,7 @@
             }
             if (feature.properties['Total_popu'] >= 763137.000000 && feature.properties['Total_popu'] <= 1148156.000000 ) {
                 return {
-                pane: 'pane_District_join_1',
+                pane: 'pane_PopulationDistrictWise_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -233,7 +231,7 @@
             }
             if (feature.properties['Total_popu'] >= 1148156.000000 && feature.properties['Total_popu'] <= 2041587.000000 ) {
                 return {
-                pane: 'pane_District_join_1',
+                pane: 'pane_PopulationDistrictWise_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -247,20 +245,20 @@
             }
             }
         }
-        map.createPane('pane_District_join_1');
-        map.getPane('pane_District_join_1').style.zIndex = 401;
-        map.getPane('pane_District_join_1').style['mix-blend-mode'] = 'normal';
-        var layer_District_join_1 = new L.geoJson(json_District_join_1, {
+        map.createPane('pane_PopulationDistrictWise_1');
+        map.getPane('pane_PopulationDistrictWise_1').style.zIndex = 401;
+        map.getPane('pane_PopulationDistrictWise_1').style['mix-blend-mode'] = 'normal';
+        var layer_PopulationDistrictWise_1 = new L.geoJson(json_PopulationDistrictWise_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_District_join_1',
-            layerName: 'layer_District_join_1',
-            pane: 'pane_District_join_1',
-            onEachFeature: pop_District_join_1,
-            style: style_District_join_1_0,
+            dataVar: 'json_PopulationDistrictWise_1',
+            layerName: 'layer_PopulationDistrictWise_1',
+            pane: 'pane_PopulationDistrictWise_1',
+            onEachFeature: pop_PopulationDistrictWise_1,
+            style: style_PopulationDistrictWise_1_0,
         });
-        bounds_group.addLayer(layer_District_join_1);
-        map.addLayer(layer_District_join_1);
+        bounds_group.addLayer(layer_PopulationDistrictWise_1);
+        map.addLayer(layer_PopulationDistrictWise_1);
         function pop_Airports_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -281,12 +279,15 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">NAME</th>\
-                        <td>' + (feature.properties['NAME'] !== null ? autolinker.link(feature.properties['NAME'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['NAME'] !== null ? autolinker.link(feature.properties['NAME'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">CLASS</th>\
                         <td>' + (feature.properties['CLASS'] !== null ? autolinker.link(feature.properties['CLASS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">POLYGONID</th>\
+                        <td class="visible-with-data" id="POLYGONID">' + (feature.properties['POLYGONID'] !== null ? autolinker.link(feature.properties['POLYGONID'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td class="visible-with-data" id="NEAR_FID"colspan="2"><strong>NEAR_FID</strong><br />' + (feature.properties['NEAR_FID'] !== null ? autolinker.link(feature.properties['NEAR_FID'].toLocaleString()) : '') + '</td>\
@@ -342,10 +343,10 @@
                 return this._div;
             };
             title.update = function () {
-                this._div.innerHTML = '<h2>अमन मानन्धर</h2>';
+                this._div.innerHTML = '<h2>Population Map of NEPAL with Airports</h2>';
             };
             title.addTo(map);
-            var abstract = new L.Control({'position':'topright'});
+            var abstract = new L.Control({'position':'bottomleft'});
             abstract.onAdd = function (map) {
                 this._div = L.DomUtil.create('div',
                 'leaflet-control abstract');
@@ -357,7 +358,7 @@
                 abstract.show = function () {
                     this._div.classList.remove("abstract");
                     this._div.classList.add("abstractUncollapsed");
-                    this._div.innerHTML = 'Hello Mortals!';
+                    this._div.innerHTML = 'AUTHOR: Aman Manandhar<br />Hello Mortals!<br /> This is a web map showing Population Data ChoroplethMap of Nepal with the distribution of Airports. Hope you find it fun. Good day ya\'ll.';
             };
             abstract.addTo(map);
         var osmGeocoder = new L.Control.Geocoder({
@@ -373,8 +374,8 @@
         var baseMaps = {};
         var overlaysTree = [
             {label: '<img src="legend/Airports_2.png" /> Airports', layer: cluster_Airports_2},
-            {label: 'District_join<br /><table><tr><td style="text-align: center;"><img src="legend/District_join_1_56582048310.png" /></td><td>5658 - 204831</td></tr><tr><td style="text-align: center;"><img src="legend/District_join_1_2048314660731.png" /></td><td>204831 - 466073</td></tr><tr><td style="text-align: center;"><img src="legend/District_join_1_4660737631372.png" /></td><td>466073 - 763137</td></tr><tr><td style="text-align: center;"><img src="legend/District_join_1_76313711481563.png" /></td><td>763137 - 1148156</td></tr><tr><td style="text-align: center;"><img src="legend/District_join_1_114815620415874.png" /></td><td>1148156 - 2041587</td></tr></table>', layer: layer_District_join_1},
-            {label: "OSM Standard", layer: layer_OSMStandard_0},]
+            {label: 'Population:District Wise<br /><table><tr><td style="text-align: center;"><img src="legend/PopulationDistrictWise_1_56582048310.png" /></td><td>5658 - 204831</td></tr><tr><td style="text-align: center;"><img src="legend/PopulationDistrictWise_1_2048314660731.png" /></td><td>204831 - 466073</td></tr><tr><td style="text-align: center;"><img src="legend/PopulationDistrictWise_1_4660737631372.png" /></td><td>466073 - 763137</td></tr><tr><td style="text-align: center;"><img src="legend/PopulationDistrictWise_1_76313711481563.png" /></td><td>763137 - 1148156</td></tr><tr><td style="text-align: center;"><img src="legend/PopulationDistrictWise_1_114815620415874.png" /></td><td>1148156 - 2041587</td></tr></table>', layer: layer_PopulationDistrictWise_1},
+            {label: "OpenStreetMap", layer: layer_OpenStreetMap_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
@@ -386,13 +387,6 @@
         });
         lay.addTo(map);
         setBounds();
-        map.addControl(new L.Control.Search({
-            layer: cluster_Airports_2,
-            initial: false,
-            hideMarkerOnCollapse: true,
-            propertyName: 'NAME'}));
-        document.getElementsByClassName('search-button')[0].className +=
-         ' fa fa-binoculars';
         var mapDiv = document.getElementById('map');
         var row = document.createElement('div');
         row.className="row";
@@ -412,7 +406,7 @@
         document.getElementById("all").appendChild(col1);
         document.getElementById("all").appendChild(col2);
         col1.appendChild(mapDiv)
-        var Filters = {"area_in_km": "real"};
+        var Filters = {"Total_popu": "int"};
         function filterFunc() {
           map.eachLayer(function(lyr){
           if ("options" in lyr && "dataVar" in lyr["options"]){
@@ -504,34 +498,42 @@
         }
             document.getElementById("menu").appendChild(
                 document.createElement("div"));
-            var div_area_in_km = document.createElement("div");
-            div_area_in_km.id = "div_area_in_km";
-            div_area_in_km.className = "slider";
-            document.getElementById("menu").appendChild(div_area_in_km);
-            var lab_area_in_km = document.createElement('div');
-            lab_area_in_km.innerHTML  = 'area_in_km: <span id="val_area_in_km"></span>';
-            lab_area_in_km.className = 'filterlabel';
-            document.getElementById("menu").appendChild(lab_area_in_km);
-            var reset_area_in_km = document.createElement('div');
-            reset_area_in_km.innerHTML = 'clear filter';
-            reset_area_in_km.className = 'filterlabel';
-            lab_area_in_km.className = 'filterlabel';
-            reset_area_in_km.onclick = function() {
-                sel_area_in_km.noUiSlider.reset();
+            var div_Total_popu = document.createElement("div");
+            div_Total_popu.id = "div_Total_popu";
+            div_Total_popu.className = "slider";
+            document.getElementById("menu").appendChild(div_Total_popu);
+            var lab_Total_popu = document.createElement('div');
+            lab_Total_popu.innerHTML  = 'Total_popu: <span id="val_Total_popu"></span>';
+            lab_Total_popu.className = 'filterlabel';
+            document.getElementById("menu").appendChild(lab_Total_popu);
+            var reset_Total_popu = document.createElement('div');
+            reset_Total_popu.innerHTML = 'clear filter';
+            reset_Total_popu.className = 'filterlabel';
+            lab_Total_popu.className = 'filterlabel';
+            reset_Total_popu.onclick = function() {
+                sel_Total_popu.noUiSlider.reset();
             };
-            document.getElementById("menu").appendChild(reset_area_in_km);
-            var sel_area_in_km = document.getElementById('div_area_in_km');
-            noUiSlider.create(sel_area_in_km, {
+            document.getElementById("menu").appendChild(reset_Total_popu);
+            var sel_Total_popu = document.getElementById('div_Total_popu');
+            noUiSlider.create(sel_Total_popu, {
                 connect: true,
-                start: [123.044946072, 7967.3884822],
+                start: [5658, 2041587],
+                step: 1,
+                format: wNumb({
+                    decimals: 0,
+                    }),
                 range: {
-                min: 123.044946072,
-                max: 7967.3884822
+                min: 5658,
+                max: 2041587
                 }
             });
-            sel_area_in_km.noUiSlider.on('update', function (values) {
-            val_area_in_km = document.getElementById('val_area_in_km');
-            val_area_in_km.innerHTML = values.join(' - ');
+            sel_Total_popu.noUiSlider.on('update', function (values) {
+            filterVals =[];
+            for (value in values){
+            filterVals.push(parseInt(value))
+            }
+            val_Total_popu = document.getElementById('val_Total_popu');
+            val_Total_popu.innerHTML = values.join(' - ');
                 filterFunc()
             });
         </script>
